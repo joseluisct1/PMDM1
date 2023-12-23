@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tareapmdm1.R
 
@@ -23,6 +24,10 @@ class ItemAdapter(val items: List<Item>): RecyclerView.Adapter<ItemAdapter.ViewH
         val item = items[position]
         holder.bind(item)
 
+        holder.itemView.setOnClickListener{
+            Toast.makeText(holder.itemView.context, "Has pulsado el elemento ${item.nemo}", Toast.LENGTH_LONG).show()
+
+        }
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -32,7 +37,7 @@ class ItemAdapter(val items: List<Item>): RecyclerView.Adapter<ItemAdapter.ViewH
         fun bind(item: Item) {
             nemonico.text = item.nemo
             nombre.text = item.name
-            capacidad.text = item.star.toString()
+            capacidad.text = "Capacidad: " + item.star.toString() + "M\u00B3"
         }
     }
 }
